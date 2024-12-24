@@ -1,4 +1,5 @@
 {
+  "homepage": "https://expense-frotend.vercel.app",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
