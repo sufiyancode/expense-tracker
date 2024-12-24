@@ -7,9 +7,8 @@ import {
   TrendingUp,
   LogOut,
 } from "lucide-react";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AuthContext } from "./context/AuthContext"; // Update this line
+
+import { AuthContext } from "./context/AuthContext";
 
 import { useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "./config/api";

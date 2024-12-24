@@ -11,32 +11,6 @@ import ExpenseTracker from "./ExpenseTracker";
 import { ENDPOINTS } from "./config/api";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 
-// // Auth Context
-// const AuthContext = createContext(null);
-
-// const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(localStorage.getItem("user"));
-
-//   const login = (userData) => {
-//     localStorage.setItem("user", JSON.stringify(userData));
-//     localStorage.setItem("token", userData.token);
-//     setUser(userData);
-//   };
-
-//   const logout = () => {
-//     localStorage.removeItem("user");
-//     localStorage.removeItem("token");
-//     setUser(null);
-//   };
-
-//   return (
-//     <AuthContext.Provider value={{ user, login, logout }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
   if (!user) return <Navigate to="/login" />;
@@ -50,26 +24,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch(ENDPOINTS.LOGIN, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-  //     const data = await response.json();
-  //     if (data.success) {
-  //       login(data);
-  //       navigate("/dashboard");
-  //     } else {
-  //       setError(data.message);
-  //     }
-  //   } catch (err) {
-  //     setError("Login failed. Please try again.");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -172,26 +126,6 @@ const Signup = () => {
   const [error, setError] = useState("");
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch(ENDPOINTS.SIGNUP, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ name, email, password }),
-  //     });
-  //     const data = await response.json();
-  //     if (data.success) {
-  //       login(data);
-  //       navigate("/dashboard");
-  //     } else {
-  //       setError(data.message);
-  //     }
-  //   } catch (err) {
-  //     setError("Signup failed. Please try again.");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -312,7 +246,6 @@ const Signup = () => {
   );
 };
 
-// Main App Component with Routes
 const App = () => {
   return (
     <AuthProvider>
