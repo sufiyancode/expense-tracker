@@ -3,13 +3,25 @@ const cors = require("cors");
 const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 const globalErrorHandler = require("./middleware/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const transactions = require("./routes/transactions");
 const ApiError = require("./utils/apiError");
 const catchAsync = require("./utils/catchAsync");
-const transactions = require("./routes/transactions");
+
+dotenv.config();
+
+if (!process.env.PORT) {
+  console.error("PORT environment variable is not set!");
+  process.exit(1);
+}
 
 const app = express();
+
+// Database connection
+connectDB();
 
 // Middleware
 app.use(express.json());
@@ -30,10 +42,11 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.json("Hello");
-});
 // Routes
+app.get("/", (req, res) => {
+  res.json("Hello from combined file");
+});
+
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/transactions", transactions);
 
@@ -43,7 +56,12 @@ app.use(
     throw new ApiError(`Can't find ${req.originalUrl} on this server`, 404);
   })
 );
-// Error Middleware
+
 app.use(globalErrorHandler);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 module.exports = app;
