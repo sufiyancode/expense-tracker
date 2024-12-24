@@ -1,4 +1,3 @@
-```markdown
 # Expense Tracker MERN Application
 
 A full-stack expense tracking application built with the MERN stack (MongoDB, Express.js, React, Node.js) that helps users manage their income and expenses.
@@ -39,7 +38,8 @@ expense-tracker/
 ├── config/
 ├── index.js
 └── package.json
-```
+
+````
 
 ## Tech Stack
 
@@ -56,7 +56,7 @@ expense-tracker/
     "recharts": "^2.15.0"
   }
 }
-```
+````
 
 ### Backend Dependencies
 
