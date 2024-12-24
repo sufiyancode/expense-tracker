@@ -31,6 +31,7 @@ app.use(morgan("combined"));
 app.use(
   cors({
     origin: [
+      "https://expense-frotend.vercel.app/login",
       "https://deploy-mern-1whq.vercel.app",
       "http://localhost:5173",
       "https://expense-tracker-mu-sage-83.vercel.app",
