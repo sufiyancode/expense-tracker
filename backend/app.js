@@ -18,7 +18,11 @@ app.use(compression());
 app.use(morgan("combined"));
 app.use(
   cors({
-    origin: ["https://deploy-mern-1whq.vercel.app", "http://localhost:5173"],
+    origin: [
+      "https://deploy-mern-1whq.vercel.app",
+      "http://localhost:5173",
+      "https://expense-tracker-mu-sage-83.vercel.app",
+    ],
     methods: "*",
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
