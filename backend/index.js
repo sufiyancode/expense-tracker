@@ -44,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get("/", (req, res) => {
-  res.json("Hello from combined file");
+  res.json("Hello from Expense Tracker");
 });
 
 app.use("/api/v1/users", userRoutes);
