@@ -26,6 +26,9 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
 // Routes
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/transactions", transactions);
